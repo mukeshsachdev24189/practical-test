@@ -23,6 +23,7 @@ const getPhaseComponent = (phase: EngagementPhase) => {
     }
 };
 
+
 export function RootContainer() {
     const { currentPhase, expanded } = useSelector(({ session }: AppState) => ({
         currentPhase: session.currentPhase,
@@ -71,6 +72,12 @@ export function RootContainer() {
                         <tr>
                             <th>Pincode: </th>
                             <td>{ipDetails && ipDetails.zip}</td>
+                        </tr>
+                        <tr>
+                            <th>View On Map: </th>
+                            <td>{ipDetails && <a onClick={() => {
+                                let win = window.open(`https://maps.google.com/?q=${ipDetails.lat},${ipDetails.lon}`)
+                            }}>Click Here</a>}</td>
                         </tr>
                     </tbody>
                 </table>
